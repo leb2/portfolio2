@@ -7,10 +7,10 @@ import ContactInfo from "../contact_info/contact_info";
 const Header = () => {
   return (
     <div className="header section" id="large-header">
-      {/*<Particles*/}
-      {/*  id="tsparticles"*/}
-      {/*  options={PARTICLES_CONFIG as any}*/}
-      {/*/>*/}
+      <Particles
+        id="tsparticles"
+        options={PARTICLES_CONFIG as any}
+      />
       <div className="section-inner">
         <div className="row">
           <div className="col-md-4">

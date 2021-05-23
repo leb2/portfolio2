@@ -58,7 +58,7 @@ const Sections = () => {
             </div>
             <div className="col-md-7">
               <div className="paragraph-header">
-                <a href="http://brendanmle.com/token">Token Gifts</a>
+                <a href="http://token.brendanmle.com">Token Gifts</a>
               </div>
               <p>
                 During my senior year at Brown, I teamed up with a group of students to create a service where
