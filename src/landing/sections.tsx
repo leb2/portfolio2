@@ -58,7 +58,7 @@ const Sections = () => {
             </div>
             <div className="col-md-7">
               <div className="paragraph-header">
-                <a href="http://token.brendanmle.com">Token Gifts</a>
+                <a href="http://brendanmle.com/token">Token Gifts</a>
               </div>
               <p>
                 During my senior year at Brown, I teamed up with a group of students to create a service where
@@ -74,7 +74,7 @@ const Sections = () => {
           <div className="row section-row">
             <div className="col-md-7">
               <div className="paragraph-header">
-                <a href="http://old.brendanmle.com">Some other stuff</a>
+                <a href="http://brendanmle.com/old">Some other stuff</a>
               </div>
               <p>
                 I did a lot of web development when I was in high school, including some freelance work. This was the
