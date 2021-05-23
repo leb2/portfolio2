@@ -1,0 +1,28 @@
+.built-with {
+  display: flex;
+  align-items: center;
+  margin-top: 22px;
+
+  .pills {
+    display: flex;
+    font-family: ubuntu, sans-serif;
+    margin-top: 14px;
+    position: relative;
+    top: -4px;
+    flex-wrap: wrap;
+
+    .pill {
+      background: #b4cdcd;
+      height: 25px;
+      line-height: 25px;
+      padding: 0 10px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 9px;
+      margin: 4px 12px 4px 0;
+
+      border-radius: 20px;
+      letter-spacing: 1px;
+    }
+  }
+}
