@@ -1,0 +1,80 @@
+.anki-viz {
+  .words {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    border-radius: 3px;
+    border: 1px solid #222;
+    overflow: hidden;
+    background: black;
+
+    .word {
+      padding: 0px 12px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      vertical-align: center;
+      color: #DDD;
+      flex-grow: 1;
+      transition: opacity 0.1s;
+
+      &:hover {
+        opacity: 0.9;
+        cursor: pointer;
+      }
+
+      &.dark-text {
+        color: #111;
+      }
+    }
+  }
+
+  .sort-select-container {
+    width: 240px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+
+    .rs-picker-select {
+      width: 100%;
+    }
+  }
+}
+
+.review-history-dots {
+  max-width: 400px;
+
+  .dots {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    min-width: 360px;
+
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      margin: 1px;
+      border-radius: 2px;
+
+      &.failed {
+        background: rgb(219, 48, 48)
+      }
+      &.passed {
+        background: rgb(50, 190, 50)
+      }
+    }
+  }
+}
+
+
+.rs-popover-content {
+  font-size: 14px;
+  color: #333;
+}
+
+.rs-popover-title {
+  font-size: 24px;
+  font-weight: normal;
+  color: black;
+}

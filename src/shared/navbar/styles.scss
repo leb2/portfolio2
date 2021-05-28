@@ -1,0 +1,33 @@
+.page-navbar {
+    font-size: 40px;
+    padding: 12px;
+    font-weight: 500;
+    width: 100%;
+    z-index: 4;
+    color: #222;
+
+    .section-inner {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    &.absolute {
+        position: absolute;
+        color: #ff8fc3;
+    }
+
+    a {
+      color: inherit;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .page-navbar {
+        color: #ff8fc3;
+        font-size: 24px;
+        font-weight: 500;
+        position: absolute;
+        width: 100%;
+        z-index: 4;
+    }
+}

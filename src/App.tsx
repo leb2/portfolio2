@@ -1,20 +1,31 @@
 import React from 'react';
-import './App.scss';
+
+
+import './styles.scss';
+import './blog/styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Header from './landing/header';
-import Navbar from "./landing/navbar";
-import Sections from './landing/sections';
-import Footer from './landing/footer';
-
+import Landing from './landing/index';
+import BlogAnki from "./blog/blog_anki";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 const App = () => {
   return (
-    <div className="App">
-      <Navbar />
-      <Header />
-      <Sections />
-      <Footer />
+    <div className="main">
+      <Router>
+        <Switch>
+          <Route path="/blog/anki">
+            <BlogAnki />
+          </Route>
+          <Route path="/">
+            <Landing />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
