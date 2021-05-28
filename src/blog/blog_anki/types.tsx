@@ -35,7 +35,7 @@ export enum SortOption {
 export const SORT_OPTIONS = [
   {
     value: SortOption.STABILITY,
-    label: 'Stability',
+    label: 'Stability (Time to Decay)',
   },
   {
     value: SortOption.TOTAL_REVIEW_TIME,

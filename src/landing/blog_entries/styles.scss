@@ -1,0 +1,34 @@
+.blog-entries {
+  padding-bottom: 120px;
+  background: #F8F8F8;
+  border-top: 1px solid #888;
+
+  .section-header {
+    font-size: 50px;
+    font-weight: bold;
+  }
+
+  .blog-entry {
+    display: flex;
+    margin-top: 30px;
+
+    .blog-entry-title {
+      font-family: 'Roboto', Helvetica, Arial, sans-serif;
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .date, .author {
+      font-size: 18px;
+    }
+
+    img.thumbnail {
+      object-fit: cover;
+      width: 100%;
+      height: 180px;
+      border: 1px solid #222;
+      border-radius: 3px;
+    }
+  }
+}

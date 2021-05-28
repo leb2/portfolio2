@@ -11,6 +11,11 @@
     top: -4px;
     flex-wrap: wrap;
 
+    .prompt {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
     .pill {
       background: #b4cdcd;
       height: 25px;

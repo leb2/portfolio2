@@ -17,11 +17,7 @@ const Page = (props: {
           : (
             <div className="section padded">
               <div className="section-inner">
-                <div className="row">
-                  <div className="col-md-12">
-                    { props.children }
-                  </div>
-                </div>
+                { props.children }
               </div>
             </div>
           )

@@ -1,4 +1,7 @@
 .anki-viz {
+  margin-top: 60px;
+  margin-bottom: 60px;
+
   .words {
     display: flex;
     flex-wrap: wrap;
@@ -30,6 +33,11 @@
     }
   }
 
+  .num-showing {
+    padding: 12px;
+    justify-content: center;
+  }
+
   .sort-select-container {
     width: 240px;
     margin-right: 12px;
@@ -48,7 +56,6 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    min-width: 360px;
 
 
     .dot {
@@ -66,15 +73,33 @@
     }
   }
 }
+.rs-popover {
+  font-size: 12px;
 
+  .rs-popover-content {
+    font-size: 1em;
+    color: #333;
+  }
 
-.rs-popover-content {
-  font-size: 14px;
-  color: #333;
+  .rs-popover-title {
+    font-size: 2em;
+    font-weight: normal;
+    color: black;
+  }
 }
 
-.rs-popover-title {
-  font-size: 24px;
-  font-weight: normal;
-  color: black;
+
+@media screen and (max-width: 500px) {
+  .rs-popover {
+    font-size: 10px;
+    max-width: 200px;
+
+    .rs-popover-content {
+      max-width: 200px;
+    }
+
+    .review-history-dots {
+      max-width: 200px;
+    }
+  }
 }

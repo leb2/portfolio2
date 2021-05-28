@@ -11,7 +11,7 @@ const Footer = () => {
           </p>
         </div>
         <div className="row">
-          <ContactInfo />
+          <ContactInfo showResume />
         </div>
       </div>
     </div>

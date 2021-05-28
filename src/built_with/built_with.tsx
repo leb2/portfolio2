@@ -3,8 +3,9 @@ import './styles.scss'
 import {LogoGithub} from "react-ionicons";
 
 const BuiltWith = (props: {
-  tags: string[],
-  githubUrl?: string
+  tags?: string[],
+  githubUrl?: string,
+  showPrompt?: boolean,
 }) => {
   return (
     <div className="built-with">
@@ -16,7 +17,14 @@ const BuiltWith = (props: {
         </div>
       )}
       <div className="pills">
-        { props.tags.map(tag => (
+        { props.showPrompt && (
+          <div className="prompt">
+            <a href={props.githubUrl!}>
+              View the source code!
+            </a>
+          </div>
+        )}
+        { (props.tags || []).map(tag => (
           <div className="pill">
             { tag }
           </div>

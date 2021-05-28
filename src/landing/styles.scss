@@ -39,10 +39,6 @@ $background-color: #161b21;
     color:  inherit;
     text-decoration: none;
   }
-
-  .logos {
-    color: white !important;
-  }
 }
 
 canvas {
@@ -114,19 +110,6 @@ a {
     opacity: 0.8;
   }
 }
-
-.buttons {
-  margin-top: 12px;
-  button {
-    border: none;
-    border-radius: 2px;
-    font-family: ubuntu, sans-serif !important;
-    text-transform: uppercase;
-    padding: 5px 20px;
-    font-size: 14px;
-  }
-}
-
 
 @media screen and (max-width: 767px) {
   .landing {

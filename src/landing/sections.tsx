@@ -23,7 +23,7 @@ const Sections = () => {
                 using Actor Critic with <a href="https://arxiv.org/abs/1506.02438">Generalized Advantage Estimation</a>. In
                 the gif to the left, you can see that the AI
                 learned to teleport its units (the blue ones) away when they were becoming weak, rediscovering a technique used by professionals called "rotating".
-                In fact, when I tried to play this minigame myself, I usually couldn't even score as well as my agent!
+                In fact, when I tried to play this minigame myself, I usually couldn't score as well as my agent!
               </p>
               <BuiltWith tags={["Python", "Tensorflow"]} githubUrl="https://github.com/leb2/starcraft-rl" />
             </div>
@@ -65,7 +65,7 @@ const Sections = () => {
                 students could gift each other alcoholic drinks. We partnered with the Grad Center Bar on
                 Brown's campus, whose owner allowed drinks from the bar to be purchased through the app,
                 and redeemed inside of the bar. We processed over $100 of sales
-                on our opening weekend, but unfortunately had to shut down shortly after due to covid.
+                on our opening weekend, but unfortunately had to shut down shortly after due to Covid.
               </p>
               <BuiltWith tags={["Javascript", "Vue.js", "Node.js", "Mongodb"]} />
             </div>
@@ -87,7 +87,6 @@ const Sections = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

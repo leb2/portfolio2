@@ -27,7 +27,7 @@ const Header = () => {
                   <span className="color-pink"> full stack engineer</span> at Uncountable.
                   I am passionate about <span className="color-blue">web development</span> and <span className="color-blue">machine learning</span>. Please read about some of my projects below!
                 </p>
-                <ContactInfo />
+                <ContactInfo showResume />
               </div>
             </div>
           </div>

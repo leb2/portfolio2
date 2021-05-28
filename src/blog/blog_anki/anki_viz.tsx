@@ -43,8 +43,8 @@ const ReviewHistoryDots = (props: { reviews: boolean[] }) => {
       </div>
       <div className="dots">
         {
-          props.reviews.map(review => (
-            <div className={classNames("dot", review ? "passed" : "failed")} />
+          props.reviews.map((review, i) => (
+            <div key={i} className={classNames("dot", review ? "passed" : "failed")} />
           ))
         }
       </div>
@@ -60,7 +60,7 @@ const EstimatePopover = ({ estimate, ...props }: { estimate: FormattedEstimate }
         I currently have a <strong>{formatPercent(estimate.probability)}%</strong> chance of remembering this word.
       </div>
       <div>
-        There is a <strong>{formatPercent(estimate.base_fail_rate * (1 - estimate.base_success_rate))}%</strong> of confusing this word with another.
+        This card has a <strong>{formatPercent(estimate.base_fail_rate * (1 - estimate.base_success_rate))}%</strong> base fail rate.
       </div>
       <div>
         The odds of remembering this word will decay by <strong>10%</strong> every <strong>{moment.duration(estimate.predicted_interval_seconds * 1000).humanize()}</strong>
@@ -82,17 +82,40 @@ const AnkiViz = () => {
   const [selectedSortBy, setSelectedSortBy] = useState<SortOption>(SortOption.STABILITY);
   const [selectedColorBy, setSelectedColorBy] = useState<SortOption>(SortOption.PROBABILITY);
   const [selectedLanguage, setSelectedLanguage] = useState<string>('japanese');
+  const [useAllWords, setUseAllWords] = useState<boolean>(false);
+  const toggleUseAllWords = useCallback(() => setUseAllWords(!useAllWords), [useAllWords, setUseAllWords])
+  const estimates: FormattedEstimate[] = useMemo(() => {
+    if (useAllWords) {
+      return ESTIMATES
+    }
+    return ESTIMATES.filter((val, i) => i % 6 === 0)
+  }, [useAllWords])
 
   const sortedEstimates = useMemo(() => {
-    return ESTIMATES.sort((a, b) => extractValue(b, selectedSortBy) - extractValue(a, selectedSortBy))
-  }, [selectedSortBy]);
+    const t = estimates.sort((a, b) => extractValue(b, selectedSortBy) - extractValue(a, selectedSortBy))
+    const totalTime = estimates.reduce((a, b) => a + b.total_review_time_ms, 0)
 
-  const maxPercent = Math.max(...ESTIMATES.map(estimate => -extractValue(estimate, selectedColorBy)))
-  const minPercent = Math.min(...ESTIMATES.map(estimate => -extractValue(estimate, selectedColorBy)))
+    let timeSofar = 0
+    for (let i = 0 ; i < t.length; i++) {
+      const percent = i / t.length;
+      timeSofar += estimates[i].total_review_time_ms
+      const timePercentJ = timeSofar / totalTime
+      if (timePercentJ + percent > 1) {
+        console.log("percent " + percent)
+        console.log("time percent, " + timePercentJ )
+        break
+      }
+    }
+    return t
+  }, [selectedSortBy, estimates]);
+
+
+  const maxPercent = Math.max(...estimates.map(estimate => -extractValue(estimate, selectedColorBy)))
+  const minPercent = Math.min(...estimates.map(estimate => -extractValue(estimate, selectedColorBy)))
 
   return (
     <div className="anki-viz">
-      <div className="d-flex">
+      <div className="d-flex align-items-end flex-wrap">
         <div className="sort-select-container">
           <div>Sort By:</div>
           <SelectPicker
@@ -120,6 +143,14 @@ const AnkiViz = () => {
             cleanable={false}
           />
         </div>
+        <div className="sort-select-container">
+          <Button
+            appearance="ghost"
+            onClick={toggleUseAllWords}
+          >
+            { useAllWords ? 'Show Fewer Words' : 'Show All Words'}
+          </Button>
+        </div>
       </div>
 
       <div className="words">
@@ -129,7 +160,7 @@ const AnkiViz = () => {
             return (
               <Whisper
                 trigger="click"
-                placement="autoHorizontalStart"
+                placement="auto"
                 speaker={<EstimatePopover estimate={estimate} />}
               >
                 <div
@@ -144,6 +175,9 @@ const AnkiViz = () => {
             );
           })
         }
+      </div>
+      <div className="d-flex align-items-center num-showing">
+        Showing { sortedEstimates.length } of { ESTIMATES.length } words.
       </div>
     </div>
   )
