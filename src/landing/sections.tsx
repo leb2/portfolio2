@@ -32,7 +32,8 @@ const Sections = () => {
           <div className="row section-row">
             <div className="col-md-7">
               <div className="paragraph-header">
-                <a href="https://sketchy.cs.brown.edu/">Sketchy</a>
+                Sketchy
+                {/*<a href="https://sketchy.cs.brown.edu/">Sketchy</a>*/}
               </div>
               <p>
                 Sketchy is a web app that I worked on while I was a member of the Brown HCI Lab, led by Dr. Jeff Huang.
