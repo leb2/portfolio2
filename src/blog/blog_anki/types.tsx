@@ -20,6 +20,7 @@ export type FormattedEstimate = {
   total_review_time_ms: number
   predicted_interval_seconds: number
   review_history: boolean[]
+  pos: string,
 }
 
 export enum SortOption {
@@ -34,12 +35,16 @@ export enum SortOption {
 
 export const SORT_OPTIONS = [
   {
+    value: SortOption.PROBABILITY,
+    label: 'Probability of Recall',
+  },
+  {
     value: SortOption.STABILITY,
-    label: 'Stability (Time to Decay)',
+    label: 'Log Stability',
   },
   {
     value: SortOption.TOTAL_REVIEW_TIME,
-    label: 'Total Review Time',
+    label: 'Total Review Time (Minutes)',
   },
   {
     value: SortOption.NUMBER_OF_REVIEWS,
@@ -50,11 +55,10 @@ export const SORT_OPTIONS = [
     label: 'Average Review Time',
   },
   {
-    value: SortOption.PROBABILITY,
-    label: 'Probability of Recall',
-  },
-  {
     value: SortOption.BASE_FAIL_RATE,
     label: 'Base Fail Rate',
   },
 ]
+
+export const sortOptionToText = (sortOption: SortOption) =>
+  SORT_OPTIONS.find((option) => option.value === sortOption)?.label;

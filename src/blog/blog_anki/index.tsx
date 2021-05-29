@@ -1,8 +1,7 @@
 import Page from "../../shared/page";
 import AnkiViz from "./anki_viz";
-import { MathComponent } from 'mathjax-react'
+import AnkiChart from './anki_chart';
 import MathJax from 'react-mathjax';
-import ReactMarkdown from 'react-markdown'
 import './styles.scss'
 import BuiltWith from "../../built_with/built_with";
 
@@ -12,26 +11,32 @@ const BlogAnki = () => {
       <div>
         <div className="header">
           <div className="title">
-            This is every Japanese word that I know and how likely I am to know it, as predicted by a
-            neural network.
+            I trained a neural network to predict how well I knew every word in my Japanese vocabulary
           </div>
           <div className="date">
             May 28, 2021
           </div>
         </div>
+        <AnkiChart />
+        <p>
+          I trained a neural network to predict the <strong>stability</strong> of my memory of every Japanese word that I
+          know. The stability is a measure of how deep a word is in my long term memory, so the higher the stability,
+          the longer I am likely to remember it for. The graph above is interactive!
+        </p>
+        <h5>Background</h5>
         <p>
           I started trying to learn Japanese in 2018, and after doing a bit of research online, I quickly found
           an app called <a href="https://apps.ankiweb.net/">Anki</a>. It was a flashcard app based on
           the <a href="https://www.supermemo.com/en/archives1990-2015/english/ol/sm2">SM-2 algorithm</a> that
           was designed to optimally schedule reviews of a card, such that there was about a 90% chance of remembering
-          that card when you next reviewed it. I immediately fell in love with the app. My plan was to use this app to grind flashcards
-          and memorize ton of Japanese words with brute force. Then, I would hopefully be able to consume native Japanese
-          content with ease.
+          that card when you next reviewed it. I immediately fell in love with the app. My plan was to grind flashcards with Anki
+          and memorize ton of Japanese words using brute force. Then, I would hopefully be well equipped to start consuming
+          content and learning the rest through immersion.
         </p>
         <p>
           So far, I haven't exactly been successful. Since embarking on this journey and as of June 2020, I have done <b>656,808 flashcard reviews</b>, spending a
           total of <strong>1300 hours</strong> in the process. I now know about 8,000 words, but I haven't really made significant progress
-          in actually understanding the language. I can sort of read stuff, but each word takes a few seconds for me to
+          in actually understanding stuff. I can sort of read, but each word takes a few seconds for me to
           decipher, making reading incredibly slow and painful. Below is a graph of the number of reviews I did per month, for the past 3 years.
         </p>
 
@@ -40,7 +45,8 @@ const BlogAnki = () => {
         </div>
 
         <p>
-          As you can see, there is a lot of red, indicating failed reviews.
+          As you can see, there is a lot of red, indicating failed reviews. There was also a period in the middle where
+          I just had quit for a few months. Then I got back into it after realizing that I had nothing better to do.
           I decided to start this project to try and figure out which words were causing the most trouble.
           To do this, I trained
           an <a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs">LSTM</a> model
@@ -50,8 +56,10 @@ const BlogAnki = () => {
           6,000 Japanese words, which I believe are gathered from various newspaper sources.
         </p>
 
+        <h5>Visualizations</h5>
         <p>
-          Each word has some statistics calculated from it. Some of these are predicted by the neural network, and some
+          The visualization below shares the same data with the chart visualization. Each data point is a single word, or card
+          in the deck. Each word has some statistics calculated from it. Some of these are predicted by the neural network, and some
           are calculated from my review history. You can click on a cell on the visualization to see statistics about each word.
           Scroll down to see a more detailed explanation.
         </p>
@@ -122,7 +130,7 @@ const BlogAnki = () => {
           Below is a calibration plot for the model, which is sort of like a predicted-actual plot for binary predictions.
           Having predictions close to the x = y line means that the model is unbiased. That is, out of all of the times
           it predicts a chance of recall of, for example, <em>80%</em>, in 80% of those reviews I would have actually recalled the card.
-          The model seems to have a harder time predicting when I will fail a card, but it seems like that is because I
+          The model seems to have a harder time predicting when I will fail a card, but this is probably just because I
           get most of my reviews correct
         </p>
 
@@ -136,12 +144,12 @@ const BlogAnki = () => {
           of words that only took me 1-2 minutes of total study time to memorize with high stability. While for other words
           I would spend over 30 minutes on reviews, and still have a low chance of remembering. This phenomenon is sort
           of like the <a href="https://en.wikipedia.org/wiki/Pareto_principle">80-20 rule</a>, but in my case it was
-          the 65-35 rule. Or 35% of of my cards would consume 65% of my time.
+          the 65-35 rule. That is, 35% of of my cards would consume about 65% of my time.
         </p>
         <p>
           Also, many of the words that I knew really well were just loanwords from English. These are usually written using the
           katakana alphabet, and look like エアコン (air conditioning), カタログ (catalog), アンテナ (antenna). Compare this to
-          the blockier <em>Kanji</em> writing system, for words like 報告 (report), 勤勉 (diligence).
+          words written in the <em>Kanji</em> writing system, for words like 報告 (report), 勤勉 (diligence).
         </p>
         <p>
           The main cause of failing a card for me is probably getting it mixed up with another cards. For example, I usually

@@ -5,7 +5,6 @@ import {formatPercent, secondsToString} from "../../shared/util";
 import {FormattedEstimate, SORT_OPTIONS, SortOption} from "./types";
 import classNames from "classnames";
 import { interpolateHcl } from 'd3';
-import 'rsuite/dist/styles/rsuite-default.css'
 import moment from 'moment';
 import { SelectPicker } from 'rsuite';
 import {extractValue} from "./util";
@@ -88,7 +87,7 @@ const AnkiViz = () => {
     if (useAllWords) {
       return ESTIMATES
     }
-    return ESTIMATES.filter((val, i) => i % 6 === 0)
+    return ESTIMATES.filter((val, i) => i % 10 === 0)
   }, [useAllWords])
 
   const sortedEstimates = useMemo(() => {

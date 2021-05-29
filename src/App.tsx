@@ -3,7 +3,6 @@ import React from 'react';
 
 import './styles.scss';
 import './blog/styles.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Landing from './landing/index';
 import BlogAnki from "./blog/blog_anki";

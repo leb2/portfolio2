@@ -14,8 +14,8 @@ const BlogEntries = () => {
               </div>
               <BlogEntry
                 imageSrc={'/images/anki_viz.png'}
-                title="This is every Japanese word that I know and how likely I am to know it, as predicted by a neural network."
-                url="blog/anki"
+                title="I trained a neural network to predict how well I knew every word in my Japanese vocabulary"
+                url="/blog/anki"
                 date="May 28, 2021"
               />
             </div>

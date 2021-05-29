@@ -37,11 +37,22 @@
     padding: 12px;
     justify-content: center;
   }
+}
 
+.anki-chart {
+  .bubble-container {
+    height: 450px;
+    width: 100%;
+  }
+}
+
+.anki-viz, .anki-chart {
   .sort-select-container {
     width: 240px;
     margin-right: 12px;
     margin-bottom: 12px;
+    font-size: 12px;
+    font-weight: bold;
 
     .rs-picker-select {
       width: 100%;
@@ -86,6 +97,10 @@
     font-weight: normal;
     color: black;
   }
+}
+
+.rs-picker-select-menu-item {
+  font-size: 12px;
 }
 
 
