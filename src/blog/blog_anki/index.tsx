@@ -29,12 +29,12 @@ const BlogAnki = () => {
           an app called <a href="https://apps.ankiweb.net/">Anki</a>. It was a flashcard app based on
           the <a href="https://www.supermemo.com/en/archives1990-2015/english/ol/sm2">SM-2 algorithm</a> that
           was designed to optimally schedule reviews of a card, such that there was about a 90% chance of remembering
-          that card when you next reviewed it. I immediately fell in love with the app. My plan was to grind flashcards with Anki
+          that card when you next reviewed it. I quickly got hooked on the app. My plan was to grind flashcards with Anki
           and memorize ton of Japanese words using brute force. Then, I would hopefully be well equipped to start consuming
           content and learning the rest through immersion.
         </p>
         <p>
-          So far, I haven't exactly been successful. Since embarking on this journey and as of June 2020, I have done <b>656,808 flashcard reviews</b>, spending a
+          So far, I haven't exactly been too successful. Since embarking on this journey and as of May 2021, I have done <b>656,808 flashcard reviews</b>, spending a
           total of <strong>1300 hours</strong> in the process. I now know about 8,000 words, but I haven't really made significant progress
           in actually understanding stuff. I can sort of read, but each word takes a few seconds for me to
           decipher, making reading incredibly slow and painful. Below is a graph of the number of reviews I did per month, for the past 3 years.
@@ -46,14 +46,14 @@ const BlogAnki = () => {
 
         <p>
           As you can see, there is a lot of red, indicating failed reviews. There was also a period in the middle where
-          I just had quit for a few months. Then I got back into it after realizing that I had nothing better to do.
+          I just had quit for a few months. Then I got back into it after some reconsidering.
           I decided to start this project to try and figure out which words were causing the most trouble.
           To do this, I trained
-          an <a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs">LSTM</a> model
-          to predict how likely I am to to remember a word, given the entire review history of the word.
+          an <a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs">LSTM</a> neural network
+          to predict how likely I am to to remember a word, given all of the reviews I have done on that card in the past.
           The cards in the visualization below are from the
           the <a href="https://ankiweb.net/shared/info/1880390099">Core 2k/6k</a> vocab deck, which contains the most common
-          6,000 Japanese words, which I believe are gathered from various newspaper sources.
+          6,000 Japanese words gathered from newspaper sources.
         </p>
 
         <h5>Visualizations</h5>
@@ -78,7 +78,7 @@ const BlogAnki = () => {
         <p>
           Where <em>t</em> is the time since the last review, <em>R</em> is the probability of recall,
           and s is the <strong>stability</strong>. Intuitively, the stability is sort of a measure of how ingrained in my brain
-          a piece of vocab was. The higher the stability, the longer the memory will take to decay. The goal of the
+          a piece of vocab is. The higher the stability, the longer the memory will take to decay. The goal of the
           model is to predict the stability of a piece of vocab.
         </p>
 
@@ -98,8 +98,7 @@ const BlogAnki = () => {
           trained to predict values for <em>A</em>, <em>B</em>, and <em>S</em>.
         </p>
         <p>
-          Intuitively, <em>B</em> is the base
-          failure rate, and A is the base success rate. I found that during my studies, I would sometimes get a card
+          I found that during my studies, I would sometimes get a card
           wrong immediately after seeing it. This would usually be because I had confused it with another card. Allowing
           the network to model this behavior prevents it from being unreasonably punished for predicting
           higher values for the stability. Likewise, A is the base recall rate, or the value that the exponential
