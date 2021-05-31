@@ -72,7 +72,7 @@ const BlogAnki = () => {
           to <a href="https://en.wikipedia.org/wiki/Forgetting_curve">forgetting theory</a>, the odds of remembering
           something exponentially decreases with time since last recalling it, according to the equation:
           <MathJax.Provider>
-            <MathJax.Node formula={'R = e^{t/S}'} />
+            <MathJax.Node formula={'R = e^{-t/S}'} />
           </MathJax.Provider>
         </p>
         <p>
