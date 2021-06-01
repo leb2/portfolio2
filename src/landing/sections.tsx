@@ -32,7 +32,6 @@ const Sections = () => {
           <div className="row section-row">
             <div className="col-md-7">
               <div className="paragraph-header">
-                Sketchy
                 <a href="https://sketchy.cs.brown.edu/">Sketchy</a>
               </div>
               <p>
